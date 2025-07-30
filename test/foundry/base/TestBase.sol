@@ -6,6 +6,9 @@ import {IEntryPoint} from "@account-abstraction/contracts/interfaces/IEntryPoint
 import {EntryPoint} from "@account-abstraction/contracts/core/EntryPoint.sol";
 import {SimpleAccountFactory} from "@account-abstraction/contracts/samples/SimpleAccountFactory.sol";
 
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+
 import { Test } from "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
 
@@ -24,7 +27,7 @@ abstract contract TestBase is Test {
 
     IEntryPoint internal ENTRYPOINT;
     SimpleAccountFactory internal FACTROY;
-
+    ERC20 internal DUMMY_ERC20;
     // -----------------------------------------
     // Modifiers
     // -----------------------------------------
@@ -64,5 +67,14 @@ abstract contract TestBase is Test {
         ENTRYPOINT = IEntryPoint(ENTRYPOINT_ADDRESS);
 
         FACTROY = new SimpleAccountFactory(ENTRYPOINT);
+        DUMMY_ERC20 = new Dummy();
+    }
+}
+
+contract Dummy is ERC20,ERC165 {
+    constructor() ERC20("Dummy", "Dummy") {}
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+        return interfaceId == type(ERC20).interfaceId || super.supportsInterface(interfaceId);
     }
 }
