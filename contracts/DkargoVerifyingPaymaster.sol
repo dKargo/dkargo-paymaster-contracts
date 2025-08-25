@@ -91,10 +91,10 @@ contract DkargoVerifyingPaymaster is BasePaymaster, PaymasterSigner {
      * It receives the `context` returned by `_validatePaymasterUserOp`. Function is not called if no context
      * is returned by {validatePaymasterUserOp}.
      */
-    function _postOp(
-        PostOpMode /* mode */,
-        bytes calldata /* context */,
-        uint256 /* actualGasCost */,
-        uint256 /* actualUserOpFeePerGas */
-    ) internal override virtual {}
+    // function _postOp(
+    //     PostOpMode /* mode */,
+    //     bytes calldata /* context */,
+    //     uint256 /* actualGasCost */,
+    //     uint256 /* actualUserOpFeePerGas */
+    // ) internal override virtual {}
 }

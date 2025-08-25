@@ -1,9 +1,12 @@
 {
   "name": "hardhat-project",
+  "type": "commonjs",
   "scripts": {
     "test:hardhat":"hardhat test ./test/hardhat/*.test.ts",
     "test:foundry":"forge test",
-    "test":"npm run test:hardhat && npm run test:foundry"
+    "test":"npm run test:hardhat && npm run test:foundry",
+    "gen:report":"forge coverage --report lcov",
+    "report":"genhtml lcov.info --branch-coverage --function-coverage --output-directory coverage-html && open coverage-html/index.html"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-foundry": "^1.2.0",

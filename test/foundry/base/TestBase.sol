@@ -9,7 +9,7 @@ import {SimpleAccountFactory} from "@account-abstraction/contracts/samples/Simpl
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-import { Test } from "forge-std/Test.sol";
+import { Test,console } from "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
 
 abstract contract TestBase is Test {

@@ -15,6 +15,7 @@ function getNetwork(url: string): {
   url: string;
   accounts: string[];
 } {
+  
   return {
     url,
     accounts: [privateKey],
